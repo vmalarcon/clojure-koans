@@ -15,14 +15,17 @@
   (= (str "First comes love, "
           "then comes marriage, "
           "then comes Clojure with the baby carriage")
-     ((fn [[a b c]] __)
+     ((fn [[a b c]]
+        (str (str "First comes " a ", ")
+          (str "then comes " b ", ")
+          (str "then comes " c " with the baby carriage")))
       ["love" "marriage" "Clojure"]))
 
   "Or in let expressions"
   (= "Rich Hickey aka The Clojurer aka Go Time aka Macro Killah"
      (let [[first-name last-name & aliases]
            (list "Rich" "Hickey" "The Clojurer" "Go Time" "Macro Killah")]
-       __))
+       (str first-name " " last-name " aka " (clojure.string/join " aka " aliases))))
 
   "You can regain the full argument if you like arguing"
   (= {:original-parts ["Stephen" "Hawking"] :named-parts {:first "Stephen" :last "Hawking"}}

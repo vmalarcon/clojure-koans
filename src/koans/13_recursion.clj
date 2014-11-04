@@ -24,6 +24,12 @@
       (reverse-internal (rest col) (conj res (first col)))))
   (reverse-internal coll '()))
 
+;(defn recursive-reverse [coll]
+;  (println coll)
+;  (if (= 0 (count coll))
+;    '()
+;    (conj (recursive-reverse (rest coll)) (first coll))))
+
 ;(defn factorial [n]
 ;  (cond (< n 2) 1
 ;    (= n 2) 2
