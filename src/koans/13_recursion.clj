@@ -18,12 +18,25 @@
         (recur (dec n) (not acc))))))
 
 (defn recursive-reverse [coll]
-  (if (empty? coll)
-    coll
-    (conj (recursive-reverse (rest coll)) (first coll))))
+  (defn reverse-internal [col res]
+    (if (= 0 (count col))
+      res
+      (reverse-internal (rest col) (conj res (first col)))))
+  (reverse-internal coll '()))
+
+;(defn factorial [n]
+;  (cond (< n 2) 1
+;    (= n 2) 2
+;    :else (* n (factorial (- n 1)))))
 
 (defn factorial [n]
-  __)
+  (loop [cnt n acc 1]
+    (if (zero? cnt)
+      acc
+      (recur (dec cnt) (* acc cnt))
+      ; in loop cnt will take the value (dec cnt)
+      ; and acc will take the value (* acc cnt)
+        )))
 
 (meditations
   "Recursion ends with a base case"
